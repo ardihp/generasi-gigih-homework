@@ -1,5 +1,5 @@
-import CardItem from './components/CardItem';
 import "./App.css"
+import CardItem from "./components/Card/CardItem";
 
 function App() {
   return (

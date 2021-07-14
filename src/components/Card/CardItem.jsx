@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "./Card";
-import Data from "./DataDummy.js";
+import Data from "../../constants/DataDummy";
 import "./Card.css";
 
 function CardItem() {
