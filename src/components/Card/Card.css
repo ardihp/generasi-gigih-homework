@@ -29,26 +29,6 @@
     box-shadow: 0 0 15px 3px #242424;
 }
 
-.container .img{
-    height: 300px;
-    width: 300px;
-}
-
-.img img{
-    height: 100%;
-    width: 100%;
-}
-
-.text{
-    font-size: 15px;
-}
-
-.text h2{
-    font-size: 24px;
-    margin: 15px 0;
-}
-
-
 .container:hover .btn{
     display: block;
     animation: button .3s linear;
@@ -70,32 +50,4 @@
         top: 0;
         opacity: 1;
     }
-}
-
-.btn{
-    margin-top: 20px;
-    display: none;
-    border: none;
-    outline: none;
-    background: #1DB954;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    box-shadow: 0 4px 0 rgb(16, 119, 50);
-    transition: all .2s ease-out;
-}
-
-.btn:hover{
-    background: rgb(34, 211, 96);
-    transition: none;
-}
-
-.btn:active{
-    box-shadow: none;
-    position: relative;
-    top: 4px;
 }
