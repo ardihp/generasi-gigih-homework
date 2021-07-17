@@ -6,7 +6,11 @@ import "../components/Card/Card.css";
 function CardItem() {
   return (
     <div className="card-item">
-      <Card image={Data.album.images[0].url} title={Data.name} artist={Data.artists[0].name} album={Data.album.name} />
+      {
+        Data.map(D => (
+          <Card key={D.id} image={D.album.images[0].url} title={D.name} artist={D.artists[0].name} album={D.album.name} />
+        ))
+      }
     </div>
   );
 }
