@@ -1,53 +1,52 @@
-.card{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 20px;
+.card {
+  display: flex;
+  justify-content: center;
+  margin: 20px 10px;
 }
 
-.card-item{
-    display: flex;
-    justify-content: center;
+.card-item {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
 }
 
-.container{
-    background-color: #242424;
-    padding: 30px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    transition: all .2s ease-out;
-    width: 300px;
+.container {
+  background-color: #242424;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease-out;
+  width: 150px;
 }
 
-.container:hover{
-    background-color: #313131;
-    cursor: pointer;
+.container:hover {
+  background-color: #313131;
+  cursor: pointer;
 }
 
-.container:hover .img{
-    box-shadow: 0 0 15px 3px #242424;
+.container:hover .img {
+  box-shadow: 0 0 15px 3px #242424;
 }
 
-.container:hover .btn{
-    display: block;
-    animation: button .3s linear;
+.container:hover .btn {
+  display: block;
+  animation: button 0.3s linear;
 }
 
-@keyframes button{
-    0%{
-        position: relative;
-        top: 20px;
-        opacity: .3;
-    }
-    50%{
-        position: relative;
-        top: 5px;
-        opacity: .7;
-    }
-    100%{
-        position: relative;
-        top: 0;
-        opacity: 1;
-    }
+@keyframes button {
+  0% {
+    position: relative;
+    top: 20px;
+    opacity: 0.3;
+  }
+  50% {
+    position: relative;
+    top: 5px;
+    opacity: 0.7;
+  }
+  100% {
+    position: relative;
+    top: 0;
+    opacity: 1;
+  }
 }
