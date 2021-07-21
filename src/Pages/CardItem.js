@@ -57,18 +57,24 @@ function CardItem() {
   return (
     <>
       <Navbar handleSearch={handleSearch} handleClick={handleClick} />
-      <h1 style={{ marginLeft: 20, marginBottom: 0, fontWeight: 600 }}>CREATE PLAYLIST</h1>
+      <h1 style={{ marginLeft: 20, marginBottom: 0, fontWeight: 600 }}>
+        CREATE PLAYLIST
+      </h1>
       <div className="card-item">
-        {Track.map(D => (
-          <Card
-            key={D.id}
-            image={D.album.images[0].url}
-            title={D.name}
-            artist={D.artists[0].name}
-            album={D.album.name}
-            url={D.album.external_urls.spotify}
-          />
-        ))}
+        {Token ? (
+          Track.map(D => (
+            <Card
+              key={D.id}
+              image={D.album.images[0].url}
+              title={D.name}
+              artist={D.artists[0].name}
+              album={D.album.name}
+              url={D.album.external_urls.spotify}
+            />
+          ))
+        ) : (
+          <h1>Login dulu, tombolnya ada di pojok kanan atas!</h1>
+        )}
       </div>
     </>
   );
