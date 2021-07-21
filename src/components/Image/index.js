@@ -1,9 +1,9 @@
 import React from "react";
-import "./Image.css";
+import Image from "./style.module.css";
 
 function index(props) {
   return (
-    <div className="img">
+    <div className={Image.img}>
       <img src={props.src} alt="thumbnail" />
     </div>
   );

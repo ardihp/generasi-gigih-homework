@@ -1,6 +1,5 @@
 body{
-  background-color: rgb(29, 29, 29);
-  color: white;
+  background-color: white;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -8,9 +7,6 @@ body{
   max-width: 1440px;
   display: flex;
   flex-direction: column;
-}
-
-.App h1{
-  text-align: center;
-  margin: 20px 0;
+  justify-content: center;
+  margin: 0 auto;
 }
