@@ -4,18 +4,18 @@ import Image from "../Image";
 import Button from "../Button";
 import Description from "../Description";
 
-function Card(props) {
+function Card({title, artist, album, image, handleSelect, btnText}) {
   return (
     <div className="card">
       <div className="container">
-        <Image src={props.image} />
+        <Image src={image} />
         <div className="right">
           <Description
-            title={props.title}
-            artist={props.artist}
-            album={props.album}
+            title={title}
+            artist={artist}
+            album={album}
           />
-          <Button text="SELECT" url={props.url} />
+          <Button text={btnText} handleSelect={handleSelect} />
         </div>
       </div>
     </div>

@@ -23,7 +23,7 @@
 
 .container:hover{
   background-color: #F0F3F9;
-  box-shadow: 0 0 10px 2px rgba(108, 111, 119, 0.15);
+  box-shadow: 0 0 10px 2px rgba(173, 176, 179, 0.15);
 }
 
 .right{
@@ -32,4 +32,13 @@
   justify-content: center;
   align-items: flex-start;
   margin-left: 20px;
+}
+
+@media screen and (max-width: 1024px){
+  .card-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 25px;
+    padding: 20px;
+  }
 }
