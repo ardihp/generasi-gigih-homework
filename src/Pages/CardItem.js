@@ -5,12 +5,12 @@ import "../components/Card/Card.css";
 import Navbar from "../components/Navbar";
 import Bubble from "../components/Button/Bubble";
 import Form from "../components/Form";
+import { getTokenFromUrl } from "../Util/getTokenFromUrl";
 
 function CardItem() {
   const [Token, setToken] = useState("");
   const [Tracks, setTracks] = useState(Data);
   const [Auth, setAuth] = useState(false);
-  const [Selected, setSelected] = useState([]);
   const [TrackSelected, setTrackSelected] = useState([]);
   const [Create, setCreate] = useState(false);
   const [UserID, setUserID] = useState("");
@@ -44,12 +44,10 @@ function CardItem() {
   };
 
   const handleDeselect = data => {
-    setSelected(Selected.filter(S => S !== data.uri));
     setTrackSelected(TrackSelected.filter(T => T.uri !== data.uri));
   };
 
   const handleSelect = data => {
-    setSelected([data.uri, ...Selected]);
     setTrackSelected([data, ...TrackSelected]);
   };
 
@@ -65,17 +63,6 @@ function CardItem() {
     } else {
       alert("You need songs to make a playlist, choose some!");
     }
-  };
-
-  const getTokenFromUrl = hash => {
-    const stringAfterHastag = hash.substring(1);
-    const paramInUrl = stringAfterHastag.split("&");
-    const paramSplitUp = paramInUrl.reduce((acc, currentValue) => {
-      const [key, value] = currentValue.split("=");
-      acc[key] = value;
-      return acc;
-    }, {});
-    return paramSplitUp;
   };
 
   const filterData = data => {
@@ -148,7 +135,6 @@ function CardItem() {
       .then(res => res.json())
       .then(data => console.log(data));
     setCreate(false);
-    setSelected([]);
     setTrackSelected([]);
   };
 
@@ -169,7 +155,7 @@ function CardItem() {
           {Create && <Form handleCreate={handleCreate} />}
           <div className="card-item">
             {Tracks.map(Track =>
-              Selected.find(S => S === Track.uri) ? (
+              TrackSelected.find(S => S.uri === Track.uri) ? (
                 <Card
                   key={Track.uri}
                   image={Track.album.images[0].url}
