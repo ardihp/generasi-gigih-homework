@@ -44,6 +44,12 @@ function CardItem() {
     getTrackData(query);
   };
 
+  const filterData = data => {
+    const tracks = [...TrackSelected.map(T => Object.assign({}, T)), ...data];
+    const filter = [...new Map(tracks.map(t => [t.uri, t])).values()];
+    setTracks(filter);
+  };
+
   const getTrackData = query => {
     const url = `https://api.spotify.com/v1/search?q=${query}&type=track&limit=10`;
     if (query) {
@@ -55,10 +61,7 @@ function CardItem() {
         .then(res => res.json())
         .then(data =>
           TrackSelected.length > 0
-            ? setTracks([
-                ...TrackSelected.map(T => Object.assign({}, T)),
-                ...data.tracks.items
-              ])
+            ? filterData(data.tracks.items)
             : setTracks(data.tracks.items)
         );
     }
