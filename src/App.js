@@ -1,10 +1,14 @@
 import "./App.css";
-import CardItem from "./Pages/CardItem";
+import Index from "./Pages/";
+import { Provider } from "react-redux";
+import store from "./Redux/Store"
 
 function App() {
   return (
     <div className="App">
-      <CardItem />
+      <Provider store={store}>
+        <Index />
+      </Provider>
     </div>
   );
 }

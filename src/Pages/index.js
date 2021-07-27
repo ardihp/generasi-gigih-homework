@@ -1,30 +1,34 @@
 import React, { useState, useEffect } from "react";
-import Card from "../components/Card/";
-import Data from "../constants/DataDummy";
+import Card from "../components/Card";
+import Data from "../Constants/DataDummy";
 import "../components/Card/Card.css";
 import Navbar from "../components/Navbar";
 import Bubble from "../components/Button/Bubble";
 import Form from "../components/Form";
 import { getTokenFromUrl } from "../Util/getTokenFromUrl";
+import { getToken } from "../Redux/tokenSlice";
+import { useSelector, useDispatch } from "react-redux";
 
-function CardItem() {
-  const [Token, setToken] = useState("");
+function Index() {
   const [Tracks, setTracks] = useState(Data);
-  const [Auth, setAuth] = useState(false);
   const [TrackSelected, setTrackSelected] = useState([]);
   const [Create, setCreate] = useState(false);
-  const [UserID, setUserID] = useState("");
+  const Token = useSelector(state => state.token.token);
+  const [User, setUser] = useState([]);
+  const [Auth, setAuth] = useState(false);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (window.location.hash) {
       const access_token = getTokenFromUrl(window.location.hash);
-      setToken(access_token);
+      dispatch(getToken(access_token));
       setAuth(true);
     }
   }, []);
 
   useEffect(() => {
-    if (Token !== "") {
+    if(Token !== ''){
       getCurrentProfile();
     }
   });
@@ -96,11 +100,11 @@ function CardItem() {
       }
     })
       .then(res => res.json())
-      .then(data => setUserID(data.id));
+      .then(data => setUser(data));
   };
 
   const createPlaylist = async e => {
-    const url = `https://api.spotify.com/v1/users/${UserID}/playlists`;
+    const url = `https://api.spotify.com/v1/users/${User.id}/playlists`;
     await fetch(url, {
       method: "POST",
       headers: {
@@ -190,4 +194,4 @@ function CardItem() {
   );
 }
 
-export default CardItem;
+export default Index;
