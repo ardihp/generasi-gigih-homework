@@ -1,23 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Card from "../components/Card";
 import Data from "../Constants/DataDummy";
 import "../components/Card/Card.css";
 import Navbar from "../components/Navbar";
 import Bubble from "../components/Button/Bubble";
 import Form from "../components/Form";
-import {
-  getTrackData,
-  filterData,
-  createPlaylist
-} from "../Util/Services";
-import { useSelector } from "react-redux";
+import { getTrackData, filterData, createPlaylist } from "../Util/Services";
+import { login } from "../Redux/userSlice";
 
 function Index() {
   const [Tracks, setTracks] = useState(Data);
   const [TrackSelected, setTrackSelected] = useState([]);
   const [Create, setCreate] = useState(false);
   const Token = useSelector(state => state.token.token);
-  const User = "317bz6wm4yksflkr44ylvqyqbhze";
+  const User = useSelector(state => state.user.user);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const url = `https://api.spotify.com/v1/me`;
+    fetch(url, {
+      headers: {
+        Authorization: "Bearer " + Token.access_token
+      }
+    })
+      .then(res => res.json())
+      .then(data => dispatch(login(data)));
+  }, [dispatch, Token]);
 
   const handleSearch = e => {
     e.preventDefault();
@@ -50,17 +59,6 @@ function Index() {
       alert("You need songs to make a playlist, choose some!");
     }
   };
-
-  // const getCurrentProfile = () => {
-  //   const url = `https://api.spotify.com/v1/me`;
-  //   fetch(url, {
-  //     headers: {
-  //       Authorization: "Bearer " + Token.access_token
-  //     }
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => setUser(data));
-  // };
 
   return (
     <>

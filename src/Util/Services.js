@@ -29,7 +29,7 @@ export const getTrackData = async (query, Token) => {
 
 export const createPlaylist = async (e, User, Token, TrackSelected) => {
   const uri = TrackSelected.map(T => T.uri);
-  const url = `https://api.spotify.com/v1/users/${User}/playlists`;
+  const url = `https://api.spotify.com/v1/users/${User.id}/playlists`;
   await fetch(url, {
     method: "POST",
     headers: {
@@ -62,4 +62,14 @@ const storeTracks = async (data, uri, Token) => {
   })
     .then(res => res.json())
     .then(data => console.log(data));
+};
+
+export const getCurrentUser = async Token => {
+  const url = `https://api.spotify.com/v1/me`;
+  const data = await fetch(url, {
+    headers: {
+      Authorization: "Bearer " + Token.access_token
+    }
+  }).then(res => res.json());
+  return data;
 };
