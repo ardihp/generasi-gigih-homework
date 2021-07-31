@@ -7,7 +7,7 @@ function Profile() {
 
   return (
     <div className={Style.profile}>
-      <p>{User.display_name}</p>
+      <p>Welcome {User.display_name}</p>
     </div>
   );
 }
