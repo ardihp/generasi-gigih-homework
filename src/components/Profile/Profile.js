@@ -7,7 +7,13 @@ function Profile() {
 
   return (
     <div className={Style.profile}>
-      <p>Welcome {User.display_name}</p>
+      {/* <div className={Style.image}>
+        <img
+          src="https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg"
+          alt=""
+        />
+      </div> */}
+      <p>{User.display_name}</p>
     </div>
   );
 }
