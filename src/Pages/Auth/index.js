@@ -5,7 +5,13 @@ import { login } from "../../Redux/userSlice";
 import Style from "./style.module.css";
 import CreatePlaylist from "../CreatePlaylist/CreatePlaylist";
 import LikedSong from "../LikedSong";
+import ForYou from "../ForYou";
+
 const routes = [
+  {
+    path: "/for-you",
+    main: () => <ForYou />
+  },
   {
     path: "/create-playlist",
     main: () => <CreatePlaylist />
@@ -40,31 +46,31 @@ function Index() {
         <ul className={Style.menu}>
           <li className={Style.menuTitle}>Recomend</li>
           <li>
-            <Link to="/create-playlist" className={Style.menuLink}><i className="fas fa-compact-disc" />For You</Link>
+            <Link to="/for-you" className={Style.menuLink}><i className="fas fa-compact-disc" />For You</Link>
           </li>
           <li>
-            <Link to="/liked-song" className={Style.menuLink}><i className="fas fa-compact-disc" />Library</Link>
+            <Link to="/liked-song" className={Style.menuLink}><i className="fas fa-book" />Library</Link>
           </li>
           <li>
-            <Link to="/liked-song" className={Style.menuLink}><i className="fas fa-compact-disc" />Radio Station</Link>
+            <Link to="/liked-song" className={Style.menuLink}><i className="fas fa-podcast" />Radio Station</Link>
           </li>
         </ul>
         <ul className={Style.menu}>
           <li className={Style.menuTitle}>My Music</li>
           <li>
-            <Link to="/create-playlist" className={Style.menuLink}><i className="fas fa-compact-disc" />Create Playlist</Link>
+            <Link to="/create-playlist" className={Style.menuLink}><i className="fas fa-plus-square" />Create Playlist</Link>
           </li>
           <li>
-            <Link to="/liked-song" className={Style.menuLink}><i className="fas fa-compact-disc" />Liked Song</Link>
+            <Link to="/liked-song" className={Style.menuLink}><i className="fas fa-heart" />Liked Song</Link>
           </li>
         </ul>
         <ul className={Style.menu}>
           <li className={Style.menuTitle}>Playlist</li>
           <li>
-            <Link to="/create-playlist" className={Style.menuLink}><i className="fas fa-compact-disc" />Lofi Hiphop</Link>
+            <Link to="/create-playlist" className={Style.menuLink}><i className="fas fa-headphones-alt" />Lofi Hiphop</Link>
           </li>
           <li>
-            <Link to="/liked-song" className={Style.menuLink}><i className="fas fa-compact-disc" />Jepun</Link>
+            <Link to="/liked-song" className={Style.menuLink}><i className="fas fa-headphones-alt" />Jepun</Link>
           </li>
         </ul>
       </div>

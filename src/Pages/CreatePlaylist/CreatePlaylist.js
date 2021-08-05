@@ -1,32 +1,22 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "../../components/Card";
-import Data from "../../Constants/DataDummy";
 import Bubble from "../../components/Button/Bubble";
-import Search from "../../components/Search/Index";
-import Profile from "../../components/Profile/Profile";
 import Form from "../../components/Form";
 import { getTrackData, filterData, createPlaylist } from "../../Util/Services";
 import { trackSelect, trackDeselect } from "../../Redux/selectedSlice";
+import {storeTrack} from "../../Redux/trackSlice";
 import Style from "./style.module.css";
+import Search from "../../components/Search/Index";
+import Profile from "../../components/Profile/Profile";
 
 function Index() {
-  const [Tracks, setTracks] = useState(Data);
+  const Tracks = useSelector(state => state.track.track);
   const TrackSelected = useSelector(state => state.selected.selected);
   const [Create, setCreate] = useState(false);
   const Token = useSelector(state => state.token.token);
   const User = useSelector(state => state.user.user);
   const dispatch = useDispatch();
-
-  const handleSearch = e => {
-    e.preventDefault();
-    const query = e.target.query.value;
-    getTrackData(query, Token).then(data =>
-      TrackSelected.length > 0
-        ? setTracks(filterData(data.tracks.items, TrackSelected))
-        : setTracks(data.tracks.items)
-    );
-  };
 
   const handleDeselect = data => {
     dispatch(trackDeselect(TrackSelected.filter(T => T.uri !== data.uri)));
@@ -34,6 +24,16 @@ function Index() {
 
   const handleSelect = data => {
     dispatch(trackSelect([data, ...TrackSelected]));
+  };
+
+  const handleSearch = e => {
+    e.preventDefault();
+    const query = e.target.query.value;
+    getTrackData(query, Token).then(data =>
+      TrackSelected.length > 0
+        ? dispatch(storeTrack(filterData(data.tracks.items, TrackSelected)))
+        : dispatch(storeTrack(data.tracks.items))
+    );
   };
 
   const handleForm = () => {

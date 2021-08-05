@@ -27,7 +27,7 @@ function index() {
           </div>
         </div>
         <div className={Style.right}>
-          <img src={process.env.PUBLIC_URL + '/valen-music.png'} alt="music" />
+          <img src={process.env.PUBLIC_URL + '/images/valen-music.png'} alt="music" />
         </div>
       </div>
     </div>
