@@ -13,11 +13,11 @@
   /* background-color: #f3ecff; */
   border: 2px solid #f3ecff;
   padding: 10px 40px;
-  width: 90px;
+  width: 180px;
   transition: all .3s linear;
 }
 
 .input:focus{
     background-color: #f3ecff;
-    width: 200px;
+    width: 250px;
 }

@@ -41,36 +41,59 @@ function Index() {
     <div className={Style.container}>
       <div className={Style.sidebar}>
         <Link className={Style.logo} to="/">
-          JOFY
+          J
+          <i className="fas fa-compact-disc" />
+          FY
         </Link>
         <ul className={Style.menu}>
           <li className={Style.menuTitle}>Recomend</li>
           <li>
-            <Link to="/for-you" className={Style.menuLink}><i className="fas fa-compact-disc" />For You</Link>
+            <Link to="/for-you" className={Style.menuLink}>
+              <i className="fas fa-compact-disc" />
+              For You
+            </Link>
           </li>
           <li>
-            <Link to="/liked-song" className={Style.menuLink}><i className="fas fa-book" />Library</Link>
+            <Link to="/liked-song" className={Style.menuLink}>
+              <i className="fas fa-book" />
+              Library
+            </Link>
           </li>
           <li>
-            <Link to="/liked-song" className={Style.menuLink}><i className="fas fa-podcast" />Radio Station</Link>
+            <Link to="/liked-song" className={Style.menuLink}>
+              <i className="fas fa-podcast" />
+              Radio Station
+            </Link>
           </li>
         </ul>
         <ul className={Style.menu}>
           <li className={Style.menuTitle}>My Music</li>
           <li>
-            <Link to="/create-playlist" className={Style.menuLink}><i className="fas fa-plus-square" />Create Playlist</Link>
+            <Link to="/create-playlist" className={Style.menuLink}>
+              <i className="fas fa-plus-square" />
+              Create Playlist
+            </Link>
           </li>
           <li>
-            <Link to="/liked-song" className={Style.menuLink}><i className="fas fa-heart" />Liked Song</Link>
+            <Link to="/liked-song" className={Style.menuLink}>
+              <i className="fas fa-heart" />
+              Liked Song
+            </Link>
           </li>
         </ul>
         <ul className={Style.menu}>
           <li className={Style.menuTitle}>Playlist</li>
           <li>
-            <Link to="/create-playlist" className={Style.menuLink}><i className="fas fa-headphones-alt" />Lofi Hiphop</Link>
+            <Link to="/create-playlist" className={Style.menuLink}>
+              <i className="fas fa-headphones-alt" />
+              Lofi Hiphop
+            </Link>
           </li>
           <li>
-            <Link to="/liked-song" className={Style.menuLink}><i className="fas fa-headphones-alt" />Jepun</Link>
+            <Link to="/liked-song" className={Style.menuLink}>
+              <i className="fas fa-headphones-alt" />
+              Jepun
+            </Link>
           </li>
         </ul>
       </div>
@@ -79,11 +102,7 @@ function Index() {
           {routes.map((route, index) => (
             // Render more <Route>s with the same paths as
             // above, but different components this time.
-            <Route
-              key={index}
-              path={route.path}
-              children={<route.main />} 
-            />
+            <Route key={index} path={route.path} children={<route.main />} />
           ))}
         </Switch>
       </div>

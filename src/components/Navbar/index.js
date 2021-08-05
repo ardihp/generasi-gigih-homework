@@ -6,7 +6,9 @@ function Index({ handleClick }) {
   return (
     <header>
       <Link className={Navbar.logo} to="/">
-        JOFY
+        J
+        <i className="fas fa-compact-disc" />
+        FY
       </Link>
       <div className={Navbar.navLeft}>
         <ul>

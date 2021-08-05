@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Style from "./style.module.css";
 import Profile from "../../components/Profile/Profile";
+import { Text } from "@chakra-ui/react";
 
 const cardList = [
   {
@@ -58,7 +59,7 @@ function Index() {
           <Profile />
         </div>
         <div className={Style.content}>
-          <h1>{greetings}</h1>
+          <Text fontSize="4xl" fontWeight="900" color="rgb(143, 145, 179)" mb={4}>{greetings}</Text>
           <div className={Style.card}>
             {cardList.map((card, index) => (
               <div className={Style.cardList} key={index}>
