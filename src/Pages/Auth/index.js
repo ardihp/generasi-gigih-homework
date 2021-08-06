@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, Switch, Route } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { login } from "../../Redux/userSlice";
 import Style from "./style.module.css";
 import CreatePlaylist from "../CreatePlaylist/CreatePlaylist";
 import LikedSong from "../LikedSong";
 import ForYou from "../ForYou";
+import Playlist from "../../components/Playlist"
 
 const routes = [
   {
@@ -23,20 +22,6 @@ const routes = [
 ];
 
 function Index() {
-  const Token = useSelector(state => state.token.token);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const url = `https://api.spotify.com/v1/me`;
-    fetch(url, {
-      headers: {
-        Authorization: "Bearer " + Token.access_token
-      }
-    })
-      .then(res => res.json())
-      .then(data => dispatch(login(data)));
-  }, [dispatch, Token]);
-
   return (
     <div className={Style.container}>
       <div className={Style.sidebar}>
@@ -83,18 +68,7 @@ function Index() {
         </ul>
         <ul className={Style.menu}>
           <li className={Style.menuTitle}>Playlist</li>
-          <li>
-            <Link to="/create-playlist" className={Style.menuLink}>
-              <i className="fas fa-headphones-alt" />
-              Lofi Hiphop
-            </Link>
-          </li>
-          <li>
-            <Link to="/liked-song" className={Style.menuLink}>
-              <i className="fas fa-headphones-alt" />
-              Jepun
-            </Link>
-          </li>
+          <Playlist />
         </ul>
       </div>
       <div className={Style.content}>

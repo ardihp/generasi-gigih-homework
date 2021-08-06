@@ -6,7 +6,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import Auth from "./Pages/Auth"
+import Auth from "./Pages/Auth";
 import Landing from "./Pages/Landing";
 import { useSelector, useDispatch } from "react-redux";
 import { getTokenFromUrl } from "./Util/Services";

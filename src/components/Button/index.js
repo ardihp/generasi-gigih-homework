@@ -1,12 +1,13 @@
 import React from "react";
-import "./Button.css"
+import { Button, ButtonGroup } from "@chakra-ui/react";
+// import "./Button.css";
 
-function index({text}) {
-
+function index({ text }) {
   return (
-    <button type="submit" className="btn">
-      {text}
-    </button>
+    <ButtonGroup size="sm" isAttached variant="outline">
+      <Button mr="-px"> {text}</Button>
+      <IconButton aria-label="Add to friends" icon={<AddIcon />} />
+    </ButtonGroup>
   );
 }
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "../../components/Card";
+import Data from "../../Constants/DataDummy";
 import Bubble from "../../components/Button/Bubble";
 import Form from "../../components/Form";
 import { getTrackData, filterData, createPlaylist } from "../../Util/Services";
@@ -9,7 +10,7 @@ import { storeTrack } from "../../Redux/trackSlice";
 import Style from "./style.module.css";
 import Search from "../../components/Search/Index";
 import Profile from "../../components/Profile/Profile";
-import { Skeleton } from "@chakra-ui/react";
+import { Skeleton, Text } from "@chakra-ui/react";
 
 function Index() {
   const Tracks = useSelector(state => state.track.track);
@@ -32,13 +33,18 @@ function Index() {
     e.preventDefault();
     const query = e.target.query.value;
     setLoading(true);
-    getTrackData(query, Token)
-      .then(data =>
-        TrackSelected.length > 0
-          ? dispatch(storeTrack(filterData(data.tracks.items, TrackSelected)))
-          : dispatch(storeTrack(data.tracks.items))
-      )
-      .then(() => setLoading(false));
+    if(query !== ''){
+      getTrackData(query, Token)
+        .then(data =>
+          TrackSelected.length > 0
+            ? dispatch(storeTrack(filterData(data.tracks.items, TrackSelected)))
+            : dispatch(storeTrack(data.tracks.items))
+        )
+        .then(() => setLoading(false));
+    } else {
+      dispatch(storeTrack(filterData(Data, TrackSelected)));
+      setLoading(false);
+    }
   };
 
   const handleForm = () => {
@@ -64,7 +70,15 @@ function Index() {
         <Profile />
       </div>
       <div className={Style.title}>
-        <p>Create Playlist</p>
+        <Text
+          fontSize="xl"
+          fontWeight="600"
+          color="rgb(143, 145, 179)"
+          fontFamily="Poppins, sans-serif"
+          mb={1}
+        >
+          Create Playlist
+        </Text>
         {TrackSelected.length > 0 && (
           <Bubble
             handleForm={handleForm}

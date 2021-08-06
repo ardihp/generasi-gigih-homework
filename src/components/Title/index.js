@@ -5,8 +5,10 @@ function index(props) {
   return (
     <Text
       fontSize="18px"
-      fontWeight="800"
+      fontWeight="700"
       color="rgb(176, 178, 206)"
+      width="800px"
+      fontFamily="Nunito, sans-serif"
       isTruncated
     >
       {props.title}

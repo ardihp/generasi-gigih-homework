@@ -1,6 +1,7 @@
 .container {
   display: flex;
   padding: 0 50px;
+  font-family: "Nunito", sans-serif;
 }
 
 .left {
@@ -11,7 +12,6 @@
 }
 
 .left h1 {
-  font-family: "Nunito", sans-serif;
   color: #d4bdff;
   font-size: 70px;
   line-height: 115%;
@@ -20,7 +20,6 @@
 }
 
 .left p {
-  font-family: "Nunito", sans-serif;
   width: 57%;
   color: #bab1c9;
   font-weight: 600;
