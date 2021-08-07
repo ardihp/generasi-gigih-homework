@@ -4,7 +4,16 @@ import Image from "../Image";
 import Description from "../Description";
 import { Button } from "@chakra-ui/react";
 
-function Card({ title, artist, album, image, handleSelect, btnText }) {
+interface CardType {
+  title: string,
+  artist: string,
+  album: string,
+  image: string,
+  handleSelect: React.MouseEventHandler<HTMLButtonElement>,
+  btnText: string
+}
+
+function Card({ title, artist, album, image, handleSelect, btnText }: CardType) {
   return (
     <div className={Style.card}>
       <div className={Style.container}>
@@ -13,12 +22,13 @@ function Card({ title, artist, album, image, handleSelect, btnText }) {
           <Description title={title} artist={artist} album={album} />
         </div>
       </div>
-      <div onClick={handleSelect} className={Style.btn}>
+      <div className={Style.btn}>
         <Button
           size="sm"
           background="rgb(209, 211, 240)"
           color="white"
           fontWeight="700"
+          onClick={handleSelect}
         >
           {btnText}
         </Button>

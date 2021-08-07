@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getLikedTrack } from "../../Util/Services";
 import { Container, Grid, Skeleton } from "@chakra-ui/react";
-import Card from "../../components/Card/";
+import CardTrack from "../../components/Track/";
 import Profile from "../../components/Profile/Profile";
 import Style from "./style.module.css"
 
@@ -26,7 +26,7 @@ function Index() {
       <Grid templateColumns="1ft" rowGap={3} p={5}>
         {Liked.map(like => (
           <Skeleton isLoaded={!loading} speed="1.2">
-            <Card
+            <CardTrack
               key={like.track.uri}
               image={like.track.album.images[0].url}
               title={like.track.name}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Card from "../Card";
+import CardTrack from "../Track";
 import { getRecommend } from "../../Util/Services";
 import { useSelector } from "react-redux";
 import { Grid, Skeleton } from "@chakra-ui/react";
@@ -20,7 +20,7 @@ function Index() {
     <Grid templateColumns="1ft" rowGap={3}>
       {Recommend.map(rec => (
         <Skeleton isLoaded={!loading} speed="1.2">
-          <Card
+          <CardTrack
             key={rec.uri}
             image={rec.album.images[0].url}
             title={rec.name}

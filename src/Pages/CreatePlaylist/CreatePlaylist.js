@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Card from "../../components/Card";
+import CardTrack from "../../components/Track";
 import Data from "../../Constants/DataDummy";
 import Bubble from "../../components/Button/Bubble";
 import Form from "../../components/Form";
@@ -33,7 +33,7 @@ function Index() {
     e.preventDefault();
     const query = e.target.query.value;
     setLoading(true);
-    if(query !== ''){
+    if (query !== "") {
       getTrackData(query, Token)
         .then(data =>
           TrackSelected.length > 0
@@ -90,7 +90,7 @@ function Index() {
       <div className={Style.cardItem}>
         {Tracks.map(Track =>
           TrackSelected.find(S => S.uri === Track.uri) ? (
-            <Card
+            <CardTrack
               key={Track.uri}
               image={Track.album.images[0].url}
               title={Track.name}
@@ -102,7 +102,7 @@ function Index() {
             />
           ) : (
             <Skeleton isLoaded={!loading} speed="1.2">
-              <Card
+              <CardTrack
                 key={Track.uri}
                 image={Track.album.images[0].url}
                 title={Track.name}
