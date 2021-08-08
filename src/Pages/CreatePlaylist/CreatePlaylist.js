@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import CardTrack from "../../components/Track";
 import Data from "../../Constants/DataDummy";
-import Bubble from "../../components/Button/Bubble";
+import Button from "../../components/Button/";
 import Form from "../../components/Form";
 import { getTrackData, filterData, createPlaylist } from "../../Util/Services";
 import { trackSelect, trackDeselect } from "../../Redux/selectedSlice";
@@ -80,7 +80,7 @@ function Index() {
           Create Playlist
         </Text>
         {TrackSelected.length > 0 && (
-          <Bubble
+          <Button
             handleForm={handleForm}
             text={Create ? "Cancel" : "Create Playlist"}
           />

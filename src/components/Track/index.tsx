@@ -13,7 +13,7 @@ interface CardType {
   btnText: string
 }
 
-function Card({ title, artist, album, image, handleSelect, btnText }: CardType) {
+function Track({ title, artist, album, image, handleSelect, btnText }: CardType) {
   return (
     <div className={Style.card}>
       <div className={Style.container}>
@@ -37,4 +37,4 @@ function Card({ title, artist, album, image, handleSelect, btnText }: CardType) 
   );
 }
 
-export default Card;
+export default Track;
