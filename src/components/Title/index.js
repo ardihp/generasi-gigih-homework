@@ -7,7 +7,7 @@ function index(props) {
       fontSize="18px"
       fontWeight="700"
       color="rgb(176, 178, 206)"
-      width="800px"
+      width="500px"
       fontFamily="Nunito, sans-serif"
       isTruncated
     >
