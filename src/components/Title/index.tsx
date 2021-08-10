@@ -10,6 +10,7 @@ function index(props: {title: string}) {
       width="500px"
       fontFamily="Nunito, sans-serif"
       isTruncated
+      data-testid="trackTitle"
     >
       {props.title}
     </Text>

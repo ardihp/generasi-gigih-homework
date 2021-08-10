@@ -17,7 +17,7 @@ function Track({ title, artist, album, image, handleSelect, btnText }: CardType)
   return (
     <div className={Style.card}>
       <div className={Style.container}>
-        <Image src={image} />
+        <Image src={image} data-testid="imageTrack" />
         <div className={Style.right}>
           <Description title={title} artist={artist} album={album} />
         </div>
@@ -29,6 +29,7 @@ function Track({ title, artist, album, image, handleSelect, btnText }: CardType)
           color="white"
           fontWeight="700"
           onClick={handleSelect}
+          data-testid="buttonTrack"
         >
           {btnText}
         </Button>

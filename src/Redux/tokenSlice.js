@@ -9,9 +9,12 @@ export const tokenSlice = createSlice({
   reducers: {
     getToken: (state, action) => {
       state.token = action.payload;
+    },
+    login: (state, action) => {
+      state.user = action.payload;
     }
   }
 });
 
-export const {getToken} = tokenSlice.actions;
+export const {getToken, login} = tokenSlice.actions;
 export default tokenSlice.reducer;
