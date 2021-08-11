@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../Redux/hooks";
 import { getLikedTrack } from "../../Util/Services";
 import { Container, Grid, Skeleton, Box, Image, Flex, Text } from "@chakra-ui/react";
-import CardTrack from "../../components/Track/";
+import CardTrack from "../../components/Track";
 import Profile from "../../components/Profile/Profile";
 import Style from "./style.module.css";
+import {likedSong} from "../../Types/trackType";
 
 function Index() {
-  const Token = useSelector(state => state.token.token);
+  const Token = useAppSelector(state => state.token.token);
   const [Liked, setLiked] = useState([]);
   const [loading, setLoading] = useState(false);
-  const User = useSelector(state => state.token.user);
+  const User = useAppSelector(state => state.token.user);
 
   useEffect(() => {
     setLoading(true);
@@ -40,8 +41,8 @@ function Index() {
           </Flex>
         </Box>
         <Grid templateColumns="1ft" rowGap={3} p={5}>
-          {Liked.map(like => (
-            <Skeleton isLoaded={!loading} speed="1.2">
+          {Liked.map((like: likedSong) => (
+            <Skeleton isLoaded={!loading}>
               <CardTrack
                 key={like.track.uri}
                 image={like.track.album.images[0].url}

@@ -8,7 +8,7 @@ function index() {
     const Response_Type = "token";
     const Redirect_URI = "http://localhost:3000";
     const Scope = "playlist-modify-private user-library-read";
-    window.location = `https://accounts.spotify.com/authorize?client_id=${Client_ID}&response_type=${Response_Type}&redirect_uri=${Redirect_URI}&scope=${Scope}&show_dialog=true`;
+    window.location.href = `https://accounts.spotify.com/authorize?client_id=${Client_ID}&response_type=${Response_Type}&redirect_uri=${Redirect_URI}&scope=${Scope}&show_dialog=true`;
   };
 
   return (
@@ -19,7 +19,7 @@ function index() {
           <h1>You bring the passion, we bring the music.</h1>
           <p>
             Get playlists and albums inspired by the artists and genres you're
-            listening to. 3 months free, then 
+            listening to. 3 months free, then
             <span className={Style.leftPrice}> $9.99 / month</span>.
           </p>
           <div className={Style.btnAction} onClick={handleClick}>
@@ -27,7 +27,10 @@ function index() {
           </div>
         </div>
         <div className={Style.right}>
-          <img src={process.env.PUBLIC_URL + '/images/valen-music.png'} alt="music" />
+          <img
+            src={process.env.PUBLIC_URL + "/images/valen-music.png"}
+            alt="music"
+          />
         </div>
       </div>
     </div>

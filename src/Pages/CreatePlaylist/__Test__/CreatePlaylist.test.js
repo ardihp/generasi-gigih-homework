@@ -1,8 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import store from "../../../Redux/Store";
-import userEvent from "@testing-library/user-event";
-import { useState } from "react";
 
 import CreatePlaylist from "../CreatePlaylist";
 
