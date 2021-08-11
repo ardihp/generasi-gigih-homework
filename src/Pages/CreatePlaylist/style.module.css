@@ -9,7 +9,7 @@
   top: 0;
   padding: 20px;
   z-index: 2;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   backdrop-filter: blur(5px);
 }
 
@@ -24,8 +24,8 @@
 .cardItem {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 10px;
-  padding: 10px 20px 20px;
+  row-gap: 12px;
+  padding: 10px 20px;
 }
 
 .create-playlist {
