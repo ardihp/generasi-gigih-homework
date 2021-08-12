@@ -1,8 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import Data from "../Constants/DataDummy";
+// import Data from "../Constants/DataDummy";
+import{Track} from "../Types/trackType";
 
-const initialState = {
-  track: Data,
+interface trackType {
+  track: Track[],
+  selected: Track[]
+}
+
+const initialState: trackType = {
+  track: [],
   selected: []
 };
 

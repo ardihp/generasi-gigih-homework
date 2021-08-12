@@ -67,14 +67,14 @@ export interface Token {
 }
 
 export interface UserProfile {
-  country:       string;
-  display_name:  string;
-  email:         string;
+  country: string;
+  display_name: string;
+  email: string;
   external_urls: ExternalUrls;
-  href:          string;
-  id:            string;
-  images:        Image[];
-  product:       string;
-  type:          string;
-  uri:           string;
+  href: string;
+  id: string;
+  images: Image[];
+  product: string;
+  type: string;
+  uri: string;
 }

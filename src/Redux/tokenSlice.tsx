@@ -3,7 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   token: "",
   user: {
-    display_name: ""
+    display_name: "",
+    images: [{
+      height: 0,
+      url: "",
+      width: 0
+    }
+    ]
   }
 };
 
