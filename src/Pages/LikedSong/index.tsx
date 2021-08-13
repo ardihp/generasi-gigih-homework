@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
+
 import { useAppSelector } from "../../Redux/hooks";
 import { getLikedTrack } from "../../Util/Services";
 import { Container, Grid, Skeleton, Box, Image, Flex, Text } from "@chakra-ui/react";
-import CardTrack from "../../components/Track";
+import { likedSong } from "../../Types/trackType";
+
+import CardTrack from "../../components/Tracks/CardTrack";
 import Profile from "../../components/Profile/Profile";
 import Style from "./style.module.css";
-import {likedSong} from "../../Types/trackType";
 
 function Index() {
   const Token = useAppSelector(state => state.token.token);

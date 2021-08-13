@@ -1,18 +1,25 @@
-import React, {useEffect} from "react";
+// import React, {useEffect} from "react";
+
 import { Link, Switch, Route } from "react-router-dom";
+// import {useAppDispatch} from "../../Redux/hooks";
+// import {storeTrack} from "../../Redux/trackSlice";
+
 import Style from "./style.module.css";
 import CreatePlaylist from "../CreatePlaylist/CreatePlaylist";
 import LikedSong from "../LikedSong";
-import ForYou from "../ForYou";
-import Playlist from "../../components/Playlist";
-import Data from "../../Constants/DataDummy";
-import {useAppDispatch} from "../../Redux/hooks";
-import {storeTrack} from "../../Redux/trackSlice";
+import Home from "../Home";
+import Library from "../Library";
+// import Playlist from "../../components/Playlist";
+// import Data from "../../Constants/DataDummy";
 
 const routes = [
   {
-    path: "/for-you",
-    main: () => <ForYou />
+    path: "/home",
+    main: () => <Home />
+  },
+  {
+    path: "/library",
+    main: () => <Library />
   },
   {
     path: "/create-playlist",
@@ -25,12 +32,6 @@ const routes = [
 ];
 
 function Index() {
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(storeTrack(Data));
-  }, [dispatch]);
-
   return (
     <div className={Style.container}>
       <div className={Style.sidebar}>
@@ -42,19 +43,19 @@ function Index() {
         <ul className={Style.menu}>
           <li className={Style.menuTitle}>Recomend</li>
           <li>
-            <Link to="/for-you" className={Style.menuLink}>
-              <i className="fas fa-compact-disc" />
-              For You
+            <Link to="/home" className={Style.menuLink}>
+              <i className="fas fa-home" />
+              Home
             </Link>
           </li>
           <li>
-            <Link to="/liked-song" className={Style.menuLink}>
+            <Link to="/library" className={Style.menuLink}>
               <i className="fas fa-book" />
               Library
             </Link>
           </li>
           <li>
-            <Link to="/liked-song" className={Style.menuLink}>
+            <Link to="/" className={Style.menuLink}>
               <i className="fas fa-podcast" />
               Radio Station
             </Link>
@@ -75,10 +76,10 @@ function Index() {
             </Link>
           </li>
         </ul>
-        <ul className={Style.menu}>
+        {/* <ul className={Style.menu}>
           <li className={Style.menuTitle}>Playlist</li>
           <Playlist />
-        </ul>
+        </ul> */}
       </div>
       <div className={Style.content}>
         <Switch>

@@ -1,36 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 import { useAppSelector, useAppDispatch } from "../../Redux/hooks";
-import CardTrack from "../../components/Track";
-import Data from "../../Constants/DataDummy";
-import Button from "../../components/Button";
-import Form from "../../components/Form";
 import { getTrackData, filterData, createPlaylist } from "../../Util/Services";
-import { storeTrack, trackSelect, trackDeselect } from "../../Redux/trackSlice";
+import { storeTrack, trackSelect } from "../../Redux/trackSlice";
+import { Text, Box } from "@chakra-ui/react";
+
+import Tracks from "../../components/Tracks/";
+import Form from "../../components/Form";
 import Style from "./style.module.css";
 import Search from "../../components/Search/Index";
 import Profile from "../../components/Profile/Profile";
-import { Skeleton, Text } from "@chakra-ui/react";
-import { Track } from "../../Types/trackType";
 
 function Index() {
-  const Tracks = useAppSelector(state => state.track.track);
   const TrackSelected = useAppSelector(state => state.track.selected);
-  const [Create, setCreate] = useState(false);
   const Token = useAppSelector(state => state.token.token);
   const User = useAppSelector(state => state.token.user);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
   const dispatch = useAppDispatch();
 
-  const handleDeselect = (data: Track) => {
-    dispatch(
-      trackDeselect(TrackSelected.filter((T: Track) => T.uri !== data.uri))
-    );
-  };
-
-  const handleSelect = (data: Track) => {
-    dispatch(trackSelect([data, ...TrackSelected]));
-  };
+  useEffect(() => {
+    dispatch(storeTrack([]));
+    dispatch(trackSelect([]));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -43,14 +36,7 @@ function Index() {
             : dispatch(storeTrack(data.tracks.items))
         )
         .then(() => setLoading(false));
-    } else {
-      dispatch(storeTrack(filterData(Data, TrackSelected)));
-      setLoading(false);
     }
-  };
-
-  const handleForm = () => {
-    setCreate(!Create);
   };
 
   const handleCreate = async (e: React.SyntheticEvent) => {
@@ -59,7 +45,6 @@ function Index() {
       createPlaylist(e, User, Token, TrackSelected);
       alert("Playlist Created!");
       dispatch(trackSelect([]));
-      setCreate(false);
     } else {
       alert("You need songs to make a playlist, choose some!");
     }
@@ -68,13 +53,6 @@ function Index() {
   return (
     <div className={Style.container}>
       <div className={Style.header}>
-        <Search
-          handleSubmit={handleSubmit}
-          handleChange={e => setQuery(e.target.value)}
-        />
-        <Profile />
-      </div>
-      <div className={Style.title}>
         <Text
           fontSize="xl"
           fontWeight="600"
@@ -84,40 +62,17 @@ function Index() {
         >
           Create Playlist
         </Text>
-        {TrackSelected.length > 0 && (
-          <Button
-            handleForm={handleForm}
-            text={Create ? "Cancel" : "Create Playlist"}
-          />
-        )}
+        <Profile />
       </div>
-      {Create && <Form handleCreate={handleCreate} />}
+      <Form handleCreate={handleCreate} />
+      <Box p={5}>
+        <Search
+          handleSubmit={handleSubmit}
+          handleChange={e => setQuery(e.target.value)}
+        />
+      </Box>
       <div className={Style.cardItem}>
-        {Tracks.map((Track: any) =>
-          TrackSelected.find((S: Track) => S.uri === Track.uri) ? (
-            <CardTrack
-              key={Track.uri}
-              image={Track.album.images[0].url}
-              title={Track.name}
-              artist={Track.artists[0].name}
-              album={Track.album.name}
-              btnText="Deselect"
-              handleSelect={() => handleDeselect(Track)}
-            />
-          ) : (
-            <Skeleton isLoaded={!loading}>
-              <CardTrack
-                key={Track.uri}
-                image={Track.album.images[0].url}
-                title={Track.name}
-                artist={Track.artists[0].name}
-                album={Track.album.name}
-                btnText="Select"
-                handleSelect={() => handleSelect(Track)}
-              />
-            </Skeleton>
-          )
-        )}
+        <Tracks loading={isLoading} />
       </div>
     </div>
   );
