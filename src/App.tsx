@@ -23,8 +23,6 @@ function App() {
     }
   }, [dispatch]);
 
-  console.log(Token);
-
   return (
     <div className="App">
       <Router>

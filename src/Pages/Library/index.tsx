@@ -6,7 +6,7 @@ import { storeTrack } from "../../Redux/trackSlice";
 import { useAppSelector, useAppDispatch } from "../../Redux/hooks";
 import { Track } from "../../Types/trackType";
 
-import Data from "../../Constants/DataDummy";
+import Data from "../../constants/DataDummy";
 import Search from "../../components/Search/Index";
 import Profile from "../../components/Profile/Profile";
 import Style from "./style.module.css";
