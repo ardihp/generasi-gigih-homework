@@ -45,6 +45,7 @@ function Index() {
       createPlaylist(e, User, Token, TrackSelected);
       alert("Playlist Created!");
       dispatch(trackSelect([]));
+      dispatch(storeTrack([]));
     } else {
       alert("You need songs to make a playlist, choose some!");
     }

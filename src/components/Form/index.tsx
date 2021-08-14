@@ -19,6 +19,8 @@ function index({
               borderRadius="md"
               name="title"
               placeholder="Playlist Title ..."
+              isRequired
+              minlength="10"
             />
           </Flex>
           <Flex direction="column">
@@ -30,6 +32,8 @@ function index({
               borderRadius="md"
               name="description"
               placeholder="Description Playlist ..."
+              isRequired
+              minlength="20"
             />
           </Flex>
         </Grid>

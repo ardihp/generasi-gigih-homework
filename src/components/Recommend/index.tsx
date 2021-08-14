@@ -27,7 +27,7 @@ function Index() {
             title={rec.name}
             artist={rec.artists[0].name}
             album={rec.album.name}
-            url={rec.external_urls.spotify}
+            url={rec.album.external_urls.spotify}
             btnText="Play"
           />
         </Skeleton>

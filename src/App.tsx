@@ -29,21 +29,18 @@ function App() {
         <Switch>
           <Route path="/home">
             {Token !== "" ? <Auth /> : <Redirect to="/" />}
-            {/* <Auth /> */}
           </Route>
           <Route path="/library">
             {Token !== "" ? <Auth /> : <Redirect to="/" />}
-            {/* <Auth /> */}
           </Route>
           <Route path="/liked-song">
             {Token !== "" ? <Auth /> : <Redirect to="/" />}
           </Route>
           <Route path="/create-playlist">
             {Token !== "" ? <Auth /> : <Redirect to="/" />}
-            {/* <Auth /> */}
           </Route>
           <Route path="/">
-            {Token !== "" ? <Redirect to="/create-playlist" /> : <Landing />}
+            {Token !== "" ? <Redirect to="/home" /> : <Landing />}
           </Route>
         </Switch>
       </Router>

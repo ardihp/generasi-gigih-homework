@@ -1,16 +1,11 @@
-// import React, {useEffect} from "react";
-
+import React from "react";
 import { Link, Switch, Route } from "react-router-dom";
-// import {useAppDispatch} from "../../Redux/hooks";
-// import {storeTrack} from "../../Redux/trackSlice";
 
 import Style from "./style.module.css";
 import CreatePlaylist from "../CreatePlaylist/CreatePlaylist";
 import LikedSong from "../LikedSong";
 import Home from "../Home";
 import Library from "../Library";
-// import Playlist from "../../components/Playlist";
-// import Data from "../../Constants/DataDummy";
 
 const routes = [
   {
@@ -52,12 +47,6 @@ function Index() {
             <Link to="/library" className={Style.menuLink}>
               <i className="fas fa-book" />
               Library
-            </Link>
-          </li>
-          <li>
-            <Link to="/" className={Style.menuLink}>
-              <i className="fas fa-podcast" />
-              Radio Station
             </Link>
           </li>
         </ul>
